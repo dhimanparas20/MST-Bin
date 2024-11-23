@@ -24,7 +24,10 @@
     </nav>
 
     <div class="container mx-auto px-6 pt-24 flex-grow">
-        <pre class="whitespace-pre-wrap">{{ paste }}</pre>
+        <div class="flex">
+            <div id="lineNumbers" class="pr-4 text-gray-500 select-none"></div>
+            <pre id="pasteContent" class="whitespace-pre-wrap flex-grow">{{ paste }}</pre>
+        </div>
     </div>
 
     <footer class="glassmorphism mt-8 py-4">
@@ -39,6 +42,24 @@
             console.log('URL copied to clipboard');
         }).catch(err => {
             console.error('Failed to copy URL: ', err);
+        });
+
+        // Add line numbers
+        document.addEventListener('DOMContentLoaded', () => {
+            const pasteContent = document.getElementById('pasteContent');
+            const lineNumbers = document.getElementById('lineNumbers');
+
+            function updateLineNumbers() {
+                const lines = pasteContent.innerText.split('\n').length;
+                lineNumbers.innerHTML = Array(lines).fill(0).map((_, i) => `${i + 1}<br>`).join('');
+            }
+
+            updateLineNumbers();
+
+            // Sync scrolling
+            pasteContent.addEventListener('scroll', () => {
+                lineNumbers.scrollTop = pasteContent.scrollTop;
+            });
         });
     </script>
 </body>
