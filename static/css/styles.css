@@ -1,0 +1,28 @@
+body {
+    font-family: 'Courier New', monospace;
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#pasteArea {
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+#lineNumbers {
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+    text-align: right;
+}
+
+footer {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

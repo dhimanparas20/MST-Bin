@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MST Bin - Paste</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.ico') }}">
+</head>
+<body class="bg-black text-white flex flex-col min-h-screen">
+    <nav class="glassmorphism fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold flex items-center">
+                <img src="{{ url_for('static', filename='img/logo.jpeg') }}" alt="MST Bin Logo" class="h-8 mr-2">
+                MST Bin
+            </a>
+            <a href="/" title="New Paste" class="text-white hover:text-blue-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-6 pt-24 flex-grow">
+        <pre class="whitespace-pre-wrap">{{ paste }}</pre>
+    </div>
+
+    <footer class="glassmorphism mt-8 py-4">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 MST Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Copy URL to clipboard
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            console.log('URL copied to clipboard');
+        }).catch(err => {
+            console.error('Failed to copy URL: ', err);
+        });
+    </script>
+</body>
+</html>
